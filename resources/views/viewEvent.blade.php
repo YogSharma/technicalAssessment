@@ -85,6 +85,9 @@
 		</table>
 	</div>
 	<script>
+
+// This is an ajax call for filtering events.
+
 	$(document).ready(function(){
 		$('#filter').on('change',function(e){
 			e.preventDefault();
@@ -111,15 +114,16 @@
 			      				<td>'+filter[i]['title']+'</td>\
 			      				<td>'+filter[i]['description']+'</td>\
 			      				<td>'+filter[i]['start_date']+'</td>\
-			      				<td>'+filter[i]['end_date']+'</td>\
-			      				<td><a href="{{url("editEvent",["id"=>'+filter[k]+'])}}"><i class="fa fa-edit" style="font-size:20px;color:blue"></i></a></td>';
-			      				
+			      				<td>'+filter[i]['end_date']+'</td>\</tr>';
 			      	}
 			      	$('#tbody').html(html);
 			      	}
 			      }
    			});
 		});
+
+// This is an ajax call for detleting event.
+
 		$('.delete').on('click',function(){
 			var deleteId = $(this).attr('id');
 			$.ajaxSetup({

@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class eventController extends Controller
 {
+//Controller for index/home page.
     public function index(){
         return view('home');
     }
+
+// Controller for crete event page.
     public function create(){
         return view('/createEvent');
     }
+
+//Controller for inserting events.
     public function insert(Request $request){
         $request->validate(
             [
@@ -32,27 +37,36 @@ class eventController extends Controller
         session()->flash('success','Event has been created successfully! Please, click go back button to view the event.');
         return view('/createEvent');
     }
-    
+
+/*Controller for viewing the events either by ascending order as per start_date or by filtering the date*/
     public function view(Request $request){
         $query = events::query();
         if($request->ajax()){
             $value = $request->filter;
+
+//short by finished events.
             if($value == 1){
                 $date = \Carbon\Carbon::today();
                 $query = DB::table('events')->select('id','title','description','start_date','end_date')->where('start_date', '<', $date)->get();
                 return response()->json(['filter'=>$query]);
             }
+
+//sort by upcomming events.
             elseif($value==2){
                 $date = \Carbon\Carbon::today();
                 $query = DB::table('events')->select('id','title','description','start_date','end_date')->where('start_date', '>', $date)->get();
                 return response()->json(['filter'=>$query]);
             }
+
+//sort by upcomming event with in 7 days.
             elseif($value==3){
                 $date1 = \Carbon\Carbon::today();
                 $date2 = \Carbon\Carbon::today()->addDays(7);
                 $query = DB::table('events')->select('id','title','description','start_date','end_date')->where('start_date', '>', $date1)->where('end_date','<',$date2)->get();
                 return response()->json(['filter'=>$query]);
             }
+
+//sorting by finished events of last 7 days.
             else{
                 $date1 = \Carbon\Carbon::today()->subDays(7);
                 $date2 = \Carbon\Carbon::today();
@@ -64,9 +78,8 @@ class eventController extends Controller
             $data = compact('events');
             return view('viewEvent')->with($data);    
     }
-    public function filter(Request $request){
 
-    }
+//Controller for edit event page.
     public function edit($id){
         $events = events::find($id);
         if(is_null($events)){
@@ -77,6 +90,8 @@ class eventController extends Controller
             return view('editEvent')->with($data);
         } 
     }
+
+//controller for updating event.
     public function update($id, Request $request){
         $events = events::find($id);
         $events->title = $request['title'];
@@ -87,6 +102,8 @@ class eventController extends Controller
          session()->flash('updated','Event has been updated successfully!');
         return redirect('viewEvent');
     }
+
+// Controller for deleting event.
     public function delete(Request $request){
         $id = $request->deleteId;
         print_r($id);
