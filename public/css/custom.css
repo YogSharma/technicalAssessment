@@ -1,0 +1,34 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr#data:nth-child(even){background-color: #e8dce0}
+
+#heading{
+  background-color: #d61c5a;
+  color: white;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+
+#standard-select{
+  border: solid #008CBA;
+  color: darkred;
+}
