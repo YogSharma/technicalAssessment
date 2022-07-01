@@ -31,6 +31,7 @@
 		<div class="row">
 			<div class="col-md-4">
 		  		<select id="filter">
+		  			<option value="">Filter</option>
 			    	<option value="1" id="finishedEvent">Finished event</option>
 			    	<option value="2" id="upcommingEvent">Upcomming event</option>
 			    	<option value="3" id="uCEwithIn7Days">Upcomming event within 7 days</option>
@@ -108,15 +109,14 @@
 			      	var html = '';
 			      	if(filter.length != 0){
 			      		for(let i = 0; i < filter.length;i++){
-			      		var k = filter[i]['id'];
 			      		html+='<tr>\
 			      				<td>'+i+'</td>\
 			      				<td>'+filter[i]['title']+'</td>\
 			      				<td>'+filter[i]['description']+'</td>\
 			      				<td>'+filter[i]['start_date']+'</td>\
 			      				<td>'+filter[i]['end_date']+'</td>\
-			      				<td><a href="{{url("editEvent",["id"=> $event->id])}}"><i class="fa fa-edit" style="font-size:20px;color:blue"></i></a></td>\
-			      <td><a href="" id="{{$event->id}}" class="delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a></td></tr>';
+			      				<td><a href="/editEvent/'+filter[i]['id']+'"><i class="fa fa-edit" style="font-size:20px;color:blue"></i></a></td>\
+			      <td><a href="" id="'+filter[i]['id']+'" class="delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a></td></tr>';
 			      	}
 			      	$('#tbody').html(html);
 			      	}

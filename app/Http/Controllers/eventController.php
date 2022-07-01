@@ -68,10 +68,15 @@ class eventController extends Controller
             }
 
 //sorting by finished events of last 7 days.
-            else{
+            elseif($value==4){
                 $date1 = \Carbon\Carbon::today()->subDays(7);
                 $date2 = \Carbon\Carbon::today();
                 $query = DB::table('events')->select('id','title','description','start_date','end_date')->where('start_date', '>', $date1)->where('end_date','<',$date2)->get();
+                return response()->json(['filter'=>$query]);
+            }
+//filter
+            else{
+                $query = DB::table('events')->get();
                 return response()->json(['filter'=>$query]);
             }   
         }
