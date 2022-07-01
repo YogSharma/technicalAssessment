@@ -71,9 +71,12 @@
 		   		
 		  	</thead>
 		  	<tbody id="tbody">
-		  		@foreach($events as $event)
+		  		@php 
+		  			$i = 1;
+		  		@endphp
+		  		@foreach($events as $event) 
 		    	<tr>
-			      <td scope="col" id="#th1"></td>
+			      <td scope="col" id="#th1">{{$i}}</td>
 			      <td scope="col">{{$event->title}}</td>
 			      <td scope="col">{{$event->description}}</td>
 			      <td scope="col">{{$event->start_date}}</td>
@@ -81,6 +84,7 @@
 			      <td><a href="{{url('editEvent',['id'=> $event->id])}}"><i class="fa fa-edit" style="font-size:20px;color:blue"></i></a></td>
 			      <td><a href="" id="{{$event->id}}" class="delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a></td>
 		    	</tr>
+		    	<p style="display: none">{{$i++}}</p>
 		    	@endforeach
 		  	</tbody>
 		</table>
@@ -109,8 +113,9 @@
 			      	var html = '';
 			      	if(filter.length != 0){
 			      		for(let i = 0; i < filter.length;i++){
+			      			var x = i + 1;
 			      		html+='<tr>\
-			      				<td>'+i+'</td>\
+			      				<td>'+x+'</td>\
 			      				<td>'+filter[i]['title']+'</td>\
 			      				<td>'+filter[i]['description']+'</td>\
 			      				<td>'+filter[i]['start_date']+'</td>\
