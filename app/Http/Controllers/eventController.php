@@ -23,8 +23,8 @@ class eventController extends Controller
         $date = \Carbon\Carbon::today();
         $request->validate(
             [
-                'title'=>'required',
-                'description'=>'required',
+                'title'=>'required|string',
+                'description'=>'required|string',
                 'start_date'=>'required|date|after_or_equal:'.$date,
                 'end_date'=>'required|after_or_equal:start_date'
             ]

@@ -43,7 +43,7 @@
 					@csrf
 			  		<br><div class="form-group">
 				    	<label>Title</label>
-				    	<input type="title" name='title'class="form-control" id="title" placeholder="Enter the event title" value="{{old('title')}}">
+				    	<input type="title" name='title'class="form-control" id="title" placeholder="Enter the event title" value="{{old('title')}}"required>
 				    	<span class="text-danger" style="background-color:#e0e0eb;">
 				    		@error('title')
 				    			{{$message}}
@@ -52,7 +52,7 @@
 			  		</div>
 			  		<div class="form-group">
 			  			<label>Description</label>
-			  			<textarea name="description" class="form-control" id="textArea" rows="3" value="{{old('description')}}"></textarea>
+			  			<textarea name="description" class="form-control" id="textArea" rows="3" value="{{old('description')}}"required></textarea>
 			  			<span class="text-danger" style="background-color:#e0e0eb;">
 				    		@error('description')
 				    			{{$message}}
@@ -61,7 +61,7 @@
 			  		</div>
 			  		<div class="form-group">
 				    	<label>Start Date</label>
-				    	<input type="date" name='start_date'class="form-control" id="stDate" placeholder="Start Date" value="{{old('start_date')}}">
+				    	<input type="date" name='start_date'class="form-control" id="stDate" placeholder="Start Date" value="{{old('start_date')}}" required>
 				    	<span class="text-danger" style="background-color:#e0e0eb;">
 				    		@error('start_date')
 				    			{{$message}}
@@ -70,7 +70,7 @@
 			  		</div>
 			  		<div class="form-group">
 				    	<label>End Date</label>
-				    	<input type="date" name='end_date' class="form-control" id="enDate" placeholder="End Date" value="{{old('end_date')}}">
+				    	<input type="date" name='end_date' class="form-control" id="enDate" placeholder="End Date" value="{{old('end_date')}}"required>
 				    	<span class="text-danger" style="background-color:#e0e0eb;">
 				    		@error('end_date')
 				    			{{$message}}
