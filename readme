@@ -1,0 +1,19 @@
+contents: 
+          Home page. (home.blade.php)
+          Create Event page.(createEvent.blade.php)
+          View Event page. (viewEvent.blade.php) ---> edit event, delete events, filter event (as per assigned).
+          Database: events [id, title, description, start date, end date]
+          Model : event.php
+          Controller: eventController --> create(), insert(), view(), edit(), update(), delete().
+          route: web.php
+          resources : view, css, js, image
+Code used:
+      html, css, bootstrap, js, ajax 
+Framework: 
+      Laravel Framework
+Tests:
+      1. client side form validation->success.
+      2. server side form validation->success.
+      3. Filter->success.
+  
+          
