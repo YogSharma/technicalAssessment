@@ -114,7 +114,9 @@
 			      				<td>'+filter[i]['title']+'</td>\
 			      				<td>'+filter[i]['description']+'</td>\
 			      				<td>'+filter[i]['start_date']+'</td>\
-			      				<td>'+filter[i]['end_date']+'</td>\</tr>';
+			      				<td>'+filter[i]['end_date']+'</td>\
+			      				<td><a href="{{url("editEvent",["id"=> $event->id])}}"><i class="fa fa-edit" style="font-size:20px;color:blue"></i></a></td>\
+			      <td><a href="" id="{{$event->id}}" class="delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></a></td></tr>';
 			      	}
 			      	$('#tbody').html(html);
 			      	}

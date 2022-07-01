@@ -20,12 +20,13 @@ class eventController extends Controller
 
 //Controller for inserting events.
     public function insert(Request $request){
+        $date = \Carbon\Carbon::today();
         $request->validate(
             [
                 'title'=>'required',
                 'description'=>'required',
-                'start_date'=>'required',
-                'end_date'=>'required'
+                'start_date'=>'required|date|after_or_equal:'.$date,
+                'end_date'=>'required|after_or_equal:start_date'
             ]
         );
         $events = new events;
